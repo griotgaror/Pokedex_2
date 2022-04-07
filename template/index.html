@@ -6,9 +6,26 @@
         <link rel="stylesheet" href="/static/index.css">
         <script type="module" src={{ url_for("static", filename="index.js") }} ></script>
     </head>
-
     <body>
+        <div id="main_content">
+            <div id="titlebar">
+                <input id="searchbar" type="text" placeholder="search...">
+            </div>
+            <div id="pokedex">
+                {% for data in all_pokemon %}
+                <main class="pokemon_container" id= {{ data.name }}>
+                    <header id="pokemon_front">
+                        <img class="pokesprite" src={{ data.sprite_front }}>
+                        <h1 class="pokedata" id="pokename"> {{ data.name }} </h1>
+                    </header>
 
-        
+                    <footer id="pokemon_back">
+                        <img class="pokesprite" src={{ data.sprite_back }}>
+                        <h1 class="pokedata" id="type"> {{data.type}} </h1>
+                    </footer>
+                </main>
+            {% endfor %}
+            </div>
+        </div>
     </body>
 </html>
